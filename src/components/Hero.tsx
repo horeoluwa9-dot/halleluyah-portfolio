@@ -9,11 +9,11 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-[100dvh] flex items-center pt-20">
-      <div className="container mx-auto px-6 lg:px-16">
+    <section id="home" className="min-h-[100dvh] flex items-center pt-20 pb-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16">
         <div
           ref={ref}
-          className="reveal grid lg:grid-cols-2 gap-12 lg:gap-24 items-center"
+          className="reveal grid lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center"
         >
           {/* Left */}
           <div className="space-y-10">
@@ -21,7 +21,7 @@ const Hero = () => {
               <div className="inline-block px-4 py-1.5 rounded-full bg-primary/8 border border-primary/15 text-[13px] font-medium text-primary tracking-wide">
                 UI/UX Designer
               </div>
-              <h1 className="text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] font-extrabold leading-[1.08] text-foreground tracking-[-0.035em]">
+              <h1 className="text-[2rem] sm:text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] font-extrabold leading-[1.08] text-foreground tracking-[-0.035em]">
                 Ayodele Halleluyah{" "}
                 <span className="text-primary">Oreoluwa</span>
               </h1>
@@ -40,8 +40,7 @@ const Hero = () => {
               </button>
               <a
                 href="/Ayodele_Halleluyah_UIUX_CV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                download="Ayodele_Halleluyah_UIUX_CV.pdf"
                 className="px-7 py-3.5 border border-border text-foreground font-medium rounded-full hover:bg-secondary hover:border-border/80 transition-all duration-300"
               >
                 Download Resume
