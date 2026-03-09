@@ -15,7 +15,7 @@ const Contact = () => {
             opportunities, feel free to reach out.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 justify-center mb-14">
             <a
               href="mailto:thehallelh@gmail.com"
               className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full border border-border/60 bg-card hover:bg-secondary hover:border-border transition-all duration-300"

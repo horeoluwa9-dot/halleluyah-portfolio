@@ -15,7 +15,7 @@ const DesignProcess = () => {
 
   return (
     <section id="process" className="py-28 lg:py-40">
-      <div ref={ref} className="container mx-auto px-6 lg:px-16">
+      <div ref={ref} className="container mx-auto px-4 sm:px-6 lg:px-16">
         <div className="mb-20 reveal">
           <p className="label-caps mb-4">Process</p>
           <h2 className="section-heading mb-5">

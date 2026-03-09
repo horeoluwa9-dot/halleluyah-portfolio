@@ -10,7 +10,7 @@ const About = () => {
 
   return (
     <section id="about" className="py-28 lg:py-40 bg-secondary/30">
-      <div ref={ref} className="reveal container mx-auto px-6 lg:px-16">
+      <div ref={ref} className="reveal container mx-auto px-4 sm:px-6 lg:px-16">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Profile Image */}
           <div className="flex justify-center">

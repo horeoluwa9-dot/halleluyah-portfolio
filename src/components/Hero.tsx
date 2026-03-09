@@ -21,7 +21,7 @@ const Hero = () => {
               <div className="inline-block px-4 py-1.5 rounded-full bg-primary/8 border border-primary/15 text-[13px] font-medium text-primary tracking-wide">
                 UI/UX Designer
               </div>
-              <h1 className="text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] font-extrabold leading-[1.08] text-foreground tracking-[-0.035em]">
+              <h1 className="text-[2rem] sm:text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] font-extrabold leading-[1.08] text-foreground tracking-[-0.035em]">
                 Ayodele Halleluyah{" "}
                 <span className="text-primary">Oreoluwa</span>
               </h1>
