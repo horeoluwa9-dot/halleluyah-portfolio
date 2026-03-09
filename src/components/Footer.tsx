@@ -8,15 +8,15 @@ const Footer = () => (
           © {new Date().getFullYear()} Ayodele Halleluyah Oreoluwa
         </p>
         <div className="flex items-center gap-8 text-[13px] text-muted-foreground">
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors duration-300 link-underline pb-0.5">
+          <a href="https://www.linkedin.com/in/ayodele-hallel" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors duration-300 link-underline pb-0.5">
             LinkedIn
           </a>
-          <a href="mailto:hello@halleluyah.design" className="hover:text-foreground transition-colors duration-300 link-underline pb-0.5">
+          <a href="mailto:thehallelh@gmail.com" className="hover:text-foreground transition-colors duration-300 link-underline pb-0.5">
             Email
           </a>
-          <Link to="/resume" className="hover:text-foreground transition-colors duration-300 link-underline pb-0.5">
+          <a href="/Ayodele_Halleluyah_UIUX_CV.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors duration-300 link-underline pb-0.5">
             Resume
-          </Link>
+          </a>
         </div>
       </div>
     </div>
