@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useReveal, useRevealChildren } from "@/hooks/useReveal";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -26,6 +27,7 @@ interface CaseStudyData {
   screens: { image: string; caption: string; description: string }[];
   reflection: string;
   nextProject?: { id: string; title: string };
+  meta: { role: string; timeline: string; tools: string };
 }
 
 const caseStudies: Record<string, CaseStudyData> = {
@@ -33,6 +35,7 @@ const caseStudies: Record<string, CaseStudyData> = {
     title: "MindLoop – Emotional Wellness App",
     subtitle: "AI-powered wellness app for emotional tracking and journaling",
     heroImage: mindloop1,
+    meta: { role: "Lead Product Designer", timeline: "8 weeks", tools: "Figma, Maze" },
     overview:
       "MindLoop is an AI-powered wellness application designed to help users track their emotions, reflect through journaling, and receive personalized wellbeing recommendations. The project focused on creating a calming, intuitive interface that encourages daily engagement.",
     problem:
@@ -60,6 +63,7 @@ const caseStudies: Record<string, CaseStudyData> = {
     title: "FirstBank Mobile Redesign",
     subtitle: "Simplifying mobile banking for millions of users",
     heroImage: firstbank1,
+    meta: { role: "UI/UX Designer", timeline: "6 weeks", tools: "Figma, Hotjar" },
     overview:
       "A comprehensive redesign of the FirstBank mobile banking app, focusing on simplifying the dashboard, improving visual hierarchy, and making transactions easier to navigate for a diverse user base.",
     problem:
@@ -86,6 +90,7 @@ const caseStudies: Record<string, CaseStudyData> = {
     title: "Jumia App Redesign",
     subtitle: "Reimagining Africa's largest e-commerce experience",
     heroImage: jumia1,
+    meta: { role: "Product Designer", timeline: "10 weeks", tools: "Figma, Useberry" },
     overview:
       "A redesign of the Jumia shopping experience focused on improving product discovery, cart usability, and the checkout flow to reduce cart abandonment and increase conversion.",
     problem:
@@ -116,6 +121,9 @@ const caseStudies: Record<string, CaseStudyData> = {
 const CaseStudy = () => {
   const { id } = useParams<{ id: string }>();
   const study = id ? caseStudies[id] : null;
+  const heroRef = useReveal();
+  const contentRef = useRevealChildren();
+  const screensRef = useRevealChildren();
 
   if (!study) {
     return (
@@ -137,92 +145,120 @@ const CaseStudy = () => {
       <Navbar />
       <main className="pt-20">
         {/* Hero */}
-        <section className="py-16 lg:py-24">
-          <div className="container mx-auto px-6 lg:px-12">
-            <Link to="/#work" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-8 transition-colors">
-              <ArrowLeft size={16} /> Back to Work
+        <section ref={heroRef} className="reveal pt-12 pb-16 lg:pt-20 lg:pb-24">
+          <div className="container mx-auto px-6 lg:px-16">
+            <Link
+              to="/#work"
+              className="inline-flex items-center gap-2 text-[13px] font-medium text-muted-foreground hover:text-foreground mb-12 transition-colors duration-300 group"
+            >
+              <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform duration-300" /> Back to Work
             </Link>
-            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4">{study.title}</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl">{study.subtitle}</p>
+            <p className="label-caps mb-5">Case Study</p>
+            <h1 className="text-3xl md:text-[3.25rem] font-extrabold text-foreground mb-5 tracking-[-0.03em] leading-[1.1]">
+              {study.title}
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed font-light">
+              {study.subtitle}
+            </p>
+
+            {/* Meta */}
+            <div className="flex flex-wrap gap-8 mt-10 pt-10 border-t border-border/40">
+              {[
+                ["Role", study.meta.role],
+                ["Timeline", study.meta.timeline],
+                ["Tools", study.meta.tools],
+              ].map(([label, value]) => (
+                <div key={label}>
+                  <p className="label-caps mb-1.5">{label}</p>
+                  <p className="text-foreground font-medium text-[15px]">{value}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* Hero Image */}
-        <section className="pb-16">
-          <div className="container mx-auto px-6 lg:px-12">
-            <div className="rounded-2xl overflow-hidden border border-border/50">
+        <section className="pb-20 lg:pb-28">
+          <div className="container mx-auto px-6 lg:px-16">
+            <div className="rounded-2xl overflow-hidden border border-border/40 shadow-2xl shadow-foreground/[0.04]">
               <img src={study.heroImage} alt={study.title} className="w-full object-cover" />
             </div>
           </div>
         </section>
 
-        {/* Overview */}
-        <section className="py-16">
-          <div className="container mx-auto px-6 lg:px-12 max-w-3xl">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Overview</h2>
-            <p className="text-muted-foreground leading-relaxed">{study.overview}</p>
-          </div>
-        </section>
+        {/* Content Sections */}
+        <div ref={contentRef}>
+          {/* Overview */}
+          <section className="py-20 reveal">
+            <div className="container mx-auto px-6 lg:px-16 max-w-3xl">
+              <p className="label-caps mb-4">Overview</p>
+              <p className="text-foreground text-lg md:text-xl leading-[1.8] font-light">{study.overview}</p>
+            </div>
+          </section>
 
-        {/* Problem & Goal */}
-        <section className="py-16 bg-secondary/50">
-          <div className="container mx-auto px-6 lg:px-12 max-w-3xl">
-            <div className="grid md:grid-cols-2 gap-12">
-              <div>
-                <h2 className="text-2xl font-bold text-foreground mb-4">Problem</h2>
-                <p className="text-muted-foreground leading-relaxed">{study.problem}</p>
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-foreground mb-4">Goal</h2>
-                <p className="text-muted-foreground leading-relaxed">{study.goal}</p>
+          {/* Problem & Goal */}
+          <section className="py-20 bg-secondary/30 reveal">
+            <div className="container mx-auto px-6 lg:px-16 max-w-4xl">
+              <div className="grid md:grid-cols-2 gap-16">
+                <div>
+                  <p className="label-caps mb-4">Problem</p>
+                  <p className="text-muted-foreground leading-[1.8]">{study.problem}</p>
+                </div>
+                <div>
+                  <p className="label-caps mb-4">Goal</p>
+                  <p className="text-muted-foreground leading-[1.8]">{study.goal}</p>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Research */}
-        <section className="py-16">
-          <div className="container mx-auto px-6 lg:px-12 max-w-3xl">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Research</h2>
-            <p className="text-muted-foreground leading-relaxed">{study.research}</p>
-          </div>
-        </section>
+          {/* Research */}
+          <section className="py-20 reveal">
+            <div className="container mx-auto px-6 lg:px-16 max-w-3xl">
+              <p className="label-caps mb-4">Research</p>
+              <p className="text-muted-foreground leading-[1.8] text-lg">{study.research}</p>
+            </div>
+          </section>
 
-        {/* Design Decisions */}
-        <section className="py-16 bg-secondary/50">
-          <div className="container mx-auto px-6 lg:px-12 max-w-3xl">
-            <h2 className="text-2xl font-bold text-foreground mb-6">Design Decisions</h2>
-            <ul className="space-y-4">
-              {study.designDecisions.map((d, i) => (
-                <li key={i} className="flex gap-4 items-start">
-                  <span className="w-8 h-8 shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-sm font-semibold text-primary">
-                    {i + 1}
-                  </span>
-                  <p className="text-muted-foreground pt-1">{d}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+          {/* Design Decisions */}
+          <section className="py-20 bg-secondary/30 reveal">
+            <div className="container mx-auto px-6 lg:px-16 max-w-3xl">
+              <p className="label-caps mb-8">Design Decisions</p>
+              <ul className="space-y-6">
+                {study.designDecisions.map((d, i) => (
+                  <li key={i} className="flex gap-5 items-start">
+                    <span className="w-8 h-8 shrink-0 rounded-full bg-primary/8 border border-primary/12 flex items-center justify-center text-[12px] font-bold text-primary">
+                      {i + 1}
+                    </span>
+                    <p className="text-foreground leading-relaxed pt-1 font-light">{d}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        </div>
 
         {/* Final UI Screens */}
-        <section className="py-16 lg:py-24">
-          <div className="container mx-auto px-6 lg:px-12">
-            <h2 className="text-2xl font-bold text-foreground mb-12 text-center">Final Designs</h2>
-            <div className="space-y-16">
+        <section className="py-24 lg:py-32">
+          <div ref={screensRef} className="container mx-auto px-6 lg:px-16">
+            <div className="text-center mb-16">
+              <p className="label-caps mb-4">Results</p>
+              <h2 className="section-heading">Final Designs</h2>
+            </div>
+            <div className="space-y-20">
               {study.screens.map((screen, i) => (
-                <div key={i} className="space-y-4">
-                  <div className="rounded-2xl overflow-hidden border border-border/50 bg-secondary/30">
+                <div key={i} className="reveal space-y-5" style={{ transitionDelay: `${i * 0.08}s` }}>
+                  <div className="rounded-2xl overflow-hidden border border-border/40 bg-secondary/20 shadow-xl shadow-foreground/[0.03] group">
                     <img
                       src={screen.image}
                       alt={screen.caption}
-                      className="w-full object-cover"
+                      className="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.015]"
                       loading="lazy"
                     />
                   </div>
-                  <div className="text-center">
-                    <h3 className="text-lg font-semibold text-foreground">{screen.caption}</h3>
-                    <p className="text-sm text-muted-foreground">{screen.description}</p>
+                  <div className="text-center pt-2">
+                    <h3 className="text-base font-semibold text-foreground tracking-tight">{screen.caption}</h3>
+                    <p className="text-sm text-muted-foreground mt-1">{screen.description}</p>
                   </div>
                 </div>
               ))}
@@ -231,23 +267,24 @@ const CaseStudy = () => {
         </section>
 
         {/* Reflection */}
-        <section className="py-16 bg-secondary/50">
-          <div className="container mx-auto px-6 lg:px-12 max-w-3xl">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Reflection</h2>
-            <p className="text-muted-foreground leading-relaxed">{study.reflection}</p>
+        <section className="py-20 bg-secondary/30">
+          <div className="container mx-auto px-6 lg:px-16 max-w-3xl">
+            <p className="label-caps mb-4">Reflection</p>
+            <p className="text-foreground text-lg leading-[1.8] font-light">{study.reflection}</p>
           </div>
         </section>
 
         {/* Next Project */}
         {study.nextProject && (
-          <section className="py-16 lg:py-24">
-            <div className="container mx-auto px-6 lg:px-12 text-center">
-              <p className="text-sm text-muted-foreground mb-3">Next Project</p>
+          <section className="py-24 lg:py-32">
+            <div className="container mx-auto px-6 lg:px-16 text-center">
+              <p className="label-caps mb-5">Next Project</p>
               <Link
                 to={`/case-study/${study.nextProject.id}`}
-                className="inline-flex items-center gap-3 text-2xl md:text-3xl font-bold text-foreground hover:text-primary transition-colors"
+                className="group inline-flex items-center gap-4 text-2xl md:text-4xl font-bold text-foreground hover:text-primary transition-colors duration-500 tracking-tight"
               >
-                {study.nextProject.title} <ArrowRight size={28} />
+                {study.nextProject.title}
+                <ArrowRight size={28} className="group-hover:translate-x-2 transition-transform duration-500" strokeWidth={1.5} />
               </Link>
             </div>
           </section>
