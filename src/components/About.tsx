@@ -3,6 +3,7 @@ import profileImg from "@/assets/profile.png";
 
 const skills = ["UX Research", "Wireframing", "Prototyping", "Visual Design"];
 const tools = ["Figma", "Photoshop"];
+const interests = ["Beauty", "Lifestyle", "Self-development", "Creativity", "Travel", "Faith"];
 
 const About = () => {
   const ref = useReveal();
@@ -22,23 +23,21 @@ const About = () => {
           <div className="space-y-10">
             <div>
               <p className="label-caps mb-4">About</p>
-              <h2 className="section-heading mb-6">
-                About Me
-              </h2>
+              <h2 className="section-heading mb-6">About Me</h2>
               <p className="text-muted-foreground text-lg leading-[1.8] mb-4">
-                I am a UI/UX designer passionate about creating clean and engaging
-                digital experiences.
+                A passionate and creative UI/UX designer focused on crafting clean
+                and engaging user experiences.
               </p>
               <p className="text-muted-foreground leading-[1.8]">
-                My work focuses on crafting intuitive interfaces that combine
-                empathy, research, and thoughtful visual design.
+                I blend curiosity and empathy to design products that not only look
+                beautiful but feel effortless to use. My work focuses on creating
+                calm, visually engaging interfaces that tell a story and improve
+                everyday interactions.
               </p>
             </div>
 
             <div>
-              <h3 className="label-caps mb-4">
-                Skills
-              </h3>
+              <h3 className="label-caps mb-4">Skills</h3>
               <div className="flex flex-wrap gap-2.5">
                 {skills.map((s) => (
                   <span key={s} className="px-4 py-2 rounded-full bg-card border border-border/60 text-[13px] font-medium text-foreground">
@@ -49,9 +48,7 @@ const About = () => {
             </div>
 
             <div>
-              <h3 className="label-caps mb-4">
-                Tools
-              </h3>
+              <h3 className="label-caps mb-4">Tools</h3>
               <div className="flex flex-wrap gap-2.5">
                 {tools.map((t) => (
                   <span key={t} className="px-4 py-2 rounded-full bg-primary/8 border border-primary/12 text-[13px] text-primary font-semibold">
@@ -59,6 +56,23 @@ const About = () => {
                   </span>
                 ))}
               </div>
+            </div>
+
+            <div>
+              <h3 className="label-caps mb-4">Interests</h3>
+              <div className="flex flex-wrap gap-2.5">
+                {interests.map((i) => (
+                  <span key={i} className="px-4 py-2 rounded-full bg-secondary border border-border/40 text-[13px] text-muted-foreground font-medium">
+                    {i}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="label-caps mb-4">Education</h3>
+              <p className="text-foreground font-medium">Bachelor of Nursing Science (BNSc)</p>
+              <p className="text-muted-foreground text-sm">LAUTECH, Ogbomoso</p>
             </div>
           </div>
         </div>
