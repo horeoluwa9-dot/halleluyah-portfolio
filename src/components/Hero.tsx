@@ -9,11 +9,11 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-[100dvh] flex items-center pt-20">
-      <div className="container mx-auto px-6 lg:px-16">
+    <section id="home" className="min-h-[100dvh] flex items-center pt-20 pb-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16">
         <div
           ref={ref}
-          className="reveal grid lg:grid-cols-2 gap-12 lg:gap-24 items-center"
+          className="reveal grid lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center"
         >
           {/* Left */}
           <div className="space-y-10">
