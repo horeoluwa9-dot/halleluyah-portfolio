@@ -1,4 +1,5 @@
 import { useReveal } from "@/hooks/useReveal";
+import profileImg from "@/assets/profile.png";
 
 const skills = ["UX Research", "Wireframing", "Prototyping", "Visual Design"];
 const tools = ["Figma", "Photoshop"];
@@ -10,10 +11,10 @@ const About = () => {
     <section id="about" className="py-28 lg:py-40 bg-secondary/30">
       <div ref={ref} className="reveal container mx-auto px-6 lg:px-16">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Profile Image Placeholder */}
+          {/* Profile Image */}
           <div className="flex justify-center">
-            <div className="w-72 h-72 md:w-[400px] md:h-[400px] rounded-[2rem] bg-gradient-to-br from-primary/12 via-accent/5 to-transparent border border-border/40 flex items-center justify-center shadow-xl shadow-primary/[0.03]">
-              <span className="text-7xl">👩🏾‍🎨</span>
+            <div className="w-72 h-72 md:w-[400px] md:h-[400px] rounded-[2rem] overflow-hidden border border-border/40 shadow-xl shadow-primary/[0.03]">
+              <img src={profileImg} alt="Ayodele Halleluyah Oreoluwa" className="w-full h-full object-cover object-top" />
             </div>
           </div>
 
