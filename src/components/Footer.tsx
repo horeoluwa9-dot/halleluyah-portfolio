@@ -14,7 +14,7 @@ const Footer = () => (
           <a href="mailto:thehallelh@gmail.com" className="hover:text-foreground transition-colors duration-300 link-underline pb-0.5">
             Email
           </a>
-          <a href="/Ayodele_Halleluyah_UIUX_CV.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors duration-300 link-underline pb-0.5">
+          <a href="/Ayodele_Halleluyah_UIUX_CV.pdf" download="Ayodele_Halleluyah_UIUX_CV.pdf" className="hover:text-foreground transition-colors duration-300 link-underline pb-0.5">
             Resume
           </a>
         </div>
