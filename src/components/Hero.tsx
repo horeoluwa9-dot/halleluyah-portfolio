@@ -40,8 +40,7 @@ const Hero = () => {
               </button>
               <a
                 href="/Ayodele_Halleluyah_UIUX_CV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                download="Ayodele_Halleluyah_UIUX_CV.pdf"
                 className="px-7 py-3.5 border border-border text-foreground font-medium rounded-full hover:bg-secondary hover:border-border/80 transition-all duration-300"
               >
                 Download Resume
