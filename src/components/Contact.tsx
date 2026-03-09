@@ -6,7 +6,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-28 lg:py-40">
-      <div ref={ref} className="reveal container mx-auto px-6 lg:px-16">
+      <div ref={ref} className="reveal container mx-auto px-4 sm:px-6 lg:px-16">
         <div className="max-w-2xl mx-auto text-center">
           <p className="label-caps mb-4">Contact</p>
           <h2 className="section-heading mb-6">Let's Work Together</h2>
